@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="Sessionxx+6_Logistic Regression_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Sessionxx+6_Logistic Regression_files/libs/quarto-html/tabby.min.js"></script>
+<script src="Sessionxx+6_Logistic Regression_files/libs/quarto-html/popper.min.js"></script>
+<script src="Sessionxx+6_Logistic Regression_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="Sessionxx+6_Logistic Regression_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Sessionxx+6_Logistic Regression_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="Sessionxx+6_Logistic Regression_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="Sessionxx+6_Logistic Regression_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+<meta name="author" content="Sungjin Kim">
+<title>Session xx+6</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="Sessionxx+6_Logistic%20Regression_files/libs/revealjs/dist/reset.css">
+<link rel="stylesheet" href="Sessionxx+6_Logistic%20Regression_files/libs/revealjs/dist/reveal.css">
+<style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #cbccc6; background-color: #1f2430; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #cbccc6; } /* Normal */
+    code span.al { color: #ff3333; background-color: #332430; font-weight: bold; } /* Alert */
+    code span.an { color: #ffe6b3; } /* Annotation */
+    code span.at { color: #73d0ff; } /* Attribute */
+    code span.bn { color: #ffcc66; } /* BaseN */
+    code span.bu { color: #95e6cb; } /* BuiltIn */
+    code span.cf { color: #ffa759; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #95e6cb; } /* Char */
+    code span.cn { color: #d4bfff; } /* Constant */
+    code span.co { color: #5c6773; font-style: italic; } /* Comment */
+    code span.cv { color: #d4bfff; } /* CommentVar */
+    code span.do { color: #5c6773; } /* Documentation */
+    code span.dt { color: #ffa759; } /* DataType */
+    code span.dv { color: #ffcc66; } /* DecVal */
+    code span.er { color: #ff3333; text-decoration: underline; } /* Error */
+    code span.ex { color: #73d0ff; font-weight: bold; } /* Extension */
+    code span.fl { color: #ffcc66; } /* Float */
+    code span.fu { color: #ffd580; } /* Function */
+    code span.im { color: #bae67e; } /* Import */
+    code span.in { color: #ffcc66; } /* Information */
+    code span.kw { color: #ffa759; font-weight: bold; } /* Keyword */
+    code span.op { color: #f29e74; } /* Operator */
+    code span.ot { color: #5ccfe6; } /* Other */
+    code span.pp { color: #f28779; } /* Preprocessor */
+    code span.re { color: #73d0ff; background-color: #2a4254; } /* RegionMarker */
+    code span.sc { color: #95e6cb; } /* SpecialChar */
+    code span.ss { color: #95e6cb; } /* SpecialString */
+    code span.st { color: #bae67e; } /* String */
+    code span.va { color: #5ccfe6; } /* Variable */
+    code span.vs { color: #bae67e; } /* VerbatimString */
+    code span.wa { color: #f28779; } /* Warning */
+  </style>
+<link rel="stylesheet" href="Sessionxx+6_Logistic%20Regression_files/libs/revealjs/dist/theme/quarto.css">
+<link href="Sessionxx+6_Logistic%20Regression_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+<link href="Sessionxx+6_Logistic%20Regression_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+<link href="Sessionxx+6_Logistic%20Regression_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="Sessionxx+6_Logistic%20Regression_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+<style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+<style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center"><h1 class="title">Session xx+6</h1>
+  <p class="subtitle">Logistic Regression</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Sungjin Kim 
+</div>
+</div>
+</div>
+
+</section><section id="last-session" class="slide level2 medium"><h2>Last Session</h2>
+<ul>
+<li>
+<p>Using RFM analysis, companies can identify and target those customers in the RFM cells most likely to respond favorably to a new offer</p>
+<ul>
+<li>enabling companies to better allocate their limited marketing resources</li>
+</ul>
+</li>
+<li><p>RFM analysis is most useful if it is costly to reach a customer with an offer</p></li>
+<li><p>RFM analysis can be performed using independent or sequential sorting</p></li>
+</ul></section><section id="agenda" class="slide level2 medium"><h2>Agenda</h2>
+<ul>
+<li><p><strong>Introduction</strong></p></li>
+<li><p>Logistic Regression (Logit)</p></li>
+<li><p>Logistic Regression (Logit) using R</p></li>
+<li><p>Takeaways</p></li>
+</ul></section><section id="objectives-of-logistic-regression-models" class="slide level2 medium"><h2>Objectives of Logistic Regression Models</h2>
+<ul>
+<li>
+<p>Logistic regression (Logit) is similar to linear regression such as ordinary least squares (OLS)</p>
+<ul>
+<li>Estimate the relationship between independent variables <em>X</em> and an independent variable <em>Y</em>
+</li>
+</ul>
+</li>
+<li>
+<p>The major difference is Logit is used when <em>Y</em> is <strong>categorical</strong></p>
+<ul>
+<li>In this class, we only consider Y can have two possible categories, i.e., <strong>binary</strong>
+</li>
+</ul>
+</li>
+<li><p>The objective of logistic regression is to determine how one or more independent variables <em>X</em> impact the probability that an observation falls into one of the two categories captured by the y variable</p></li>
+</ul></section><section id="common-uses-of-logistic-regression-models" class="slide level2 medium"><h2>Common Uses of Logistic Regression Models</h2>
+<ul>
+<li>
+<p>Logistic regression is commonly used by Marketing researchers.</p>
+<ul>
+<li><p>Customer acquisition: Will a certain customer buy the company’s product (yes/no)?</p></li>
+<li>
+<p>Predict retention of current customers (yes/no)</p>
+<ul>
+<li>Which customers are most likely to defect considering certain predictor (x) variables?</li>
+</ul>
+</li>
+<li><p>Estimate the likelihood that a person will respond favorably to a mailing campaign (yes/no)</p></li>
+</ul>
+</li>
+</ul></section><section id="agenda-1" class="slide level2 medium"><h2>Agenda</h2>
+<ul>
+<li><p>Introduction</p></li>
+<li><p><strong>Logistic Regression (Logit)</strong></p></li>
+<li><p>Logistic Regression (Logit) using R</p></li>
+<li><p>Takeaways</p></li>
+</ul></section><section id="logistic-regression-example-myfriend" class="slide level2 medium"><h2>Logistic Regression Example: MyFriend</h2>
+<ul>
+<li><p>MyFriend is a relatively new insurance company specializing in car insurance policies</p></li>
+<li><p>You, the marketing analyst, want to identify current customers who are at the risk of churning</p></li>
+<li>
+<p>You obtained useful data from the last 5 years</p>
+<ul>
+<li><p>Whether customers had churned (1=yes, 0=no)</p></li>
+<li><p>Customers’ complaint behavior</p></li>
+<li><p>Gender, age, education, annual income, geographic information</p></li>
+</ul>
+</li>
+</ul></section><section id="logistic-regression-example-myfriend-cont." class="slide level2 small"><h2>Logistic Regression Example: MyFriend (cont.)</h2>
+<ul>
+<li>
+<p>You estimated a logistic regression model</p>
+<ul>
+<li><p>Used the respective customer’s churn information as the dependent variable (1=yes, 0=no)</p></li>
+<li><p>The other customer variables as the independent variables</p></li>
+</ul>
+</li>
+<li><p>According to the model results, churn probabilities of MyFriend’s current customers ranged from as low as 9% to as high as 99%</p></li>
+<li><p>From the history data, you know who are more valuable customers to your firm</p></li>
+<li><p>Based on these, you and the team build a marketing strategy to target those valuable customers with high probabilities of churning</p></li>
+</ul></section><section id="logistic-regression-model" class="slide level2 small"><h2>Logistic Regression Model</h2>
+<ul>
+<li>The logit model takes the following form</li>
+</ul>
+<p><span class="math display">\[
+p=\frac{e^{\beta_{0}+\beta_{1}x_{1}+\beta_{2}x_{2}+\beta_{3}x_{3}...}}{1+e^{\beta_{0}+\beta_{1}x_{1}+\beta_{2}x_{2}+\beta_{3}x_{3}...}}  
+\]</span>where</p>
+<ul>
+<li><p><span class="math inline">\(e\)</span> is the base of the natural logarithm, i.e., 2.71828,</p></li>
+<li><p><span class="math inline">\(p\)</span> is the probability of happening (e.g., probability of customer churn)</p></li>
+<li><p><span class="math inline">\(x\)</span> are the predictor variables, and <span class="math inline">\(\beta\)</span> are the coefficients to be estimated</p></li>
+<li><p>The model estimates the probability of the event happening (e.g., churn) as a function of the <span class="math inline">\(X\)</span> variables.</p></li>
+</ul></section><section id="logistic-regression-model-1" class="slide level2 small"><h2>Logistic Regression Model</h2>
+<ul>
+<li><p><span class="math inline">\(p\)</span> is the probability: <span class="math inline">\(p\)</span> will be between 0 and 1</p></li>
+<li><p>Logistic regression can be performed with one or more x variables that can be either continuous of binary.</p></li>
+<li>
+<p>With only one x variable, the probability p follows an s-shape</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="Sessionxx+6_Logistic-Regression_files/figure-revealjs/unnamed-chunk-2-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</li>
+</ul></section><section id="odds-of-an-event" class="slide level2 small"><h2>Odds of an event</h2>
+<ul>
+<li>The probability can be translated to odds of an event</li>
+</ul>
+<p><span class="math display">\[
+\frac{p}{1-p}=e^{\beta_{0}+\beta_{1}x_{1}+\beta_{2}x_{2}+\beta_{3}x_{3}...}
+\]</span></p>
+<ul>
+<li><p>Probability ranges between 0 and 1, where 0 is an impossible event and 1 an inevitable event</p></li>
+<li><p>Odds on the other hand can range from 0 to infinity. Odds capture the ratio of how often an event of interest occurred (e.g., customers who churned) over how often it did not occur (e.g., customers who did not churn)</p></li>
+</ul></section><section id="model-fit-and-testing-for-significance-of-the-coefficients" class="slide level2 small"><h2>Model Fit and Testing for Significance of the Coefficients</h2>
+<ul>
+<li>
+<p>Logistic regression uses maximum likelihood to estimate the regression coefficients</p>
+<ul>
+<li><p>the algorithm maximizes the likelihood that an event occurs using iterative computing methods.</p></li>
+<li><p>logistic regression model fit is also assessed differently</p></li>
+</ul>
+</li>
+<li><p>This means that the R-squared is hard to obtain</p></li>
+<li><p>Instead, R reports information criteria, called <a href="https://en.wikipedia.org/wiki/Akaike_information_criterion">AIC</a></p></li>
+<li><p>A lower AIC value means a better fit</p></li>
+</ul></section><section id="logistic-regression-with-one-predictor-variable" class="slide level2 small"><h2>Logistic Regression with one predictor variable</h2>
+<ul>
+<li>
+<p>Returning to the MyFriend example, you obtained following results</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 14%">
+<col style="width: 23%">
+<col style="width: 13%">
+<col style="width: 17%">
+</colgroup>
+<thead><tr class="header">
+<th>Predictor variable</th>
+<th>Estimate</th>
+<th>Standard Error</th>
+<th>z-value</th>
+<th>p-value</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Constant</td>
+<td>-2.57</td>
+<td>2.96</td>
+<td>-8.66</td>
+<td>0.00***</td>
+</tr>
+<tr class="even">
+<td>Complaints</td>
+<td>1.71</td>
+<td>0.181</td>
+<td>9.43</td>
+<td>0.00***</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>We see that the complaint coefficient is significant and positive</p>
+<div>
+<ul>
+<li>As the number of complaints increases, so does the probability that the customers will churn</li>
+</ul>
+</div>
+<p><span class="math display">\[ p=\frac{e^{\beta_{0}+\beta_{1}x_{1}+\beta_{2}x_{2}+\beta_{3}x_{3}...}}{1+e^{\beta_{0}+\beta_{1}x_{1}+\beta_{2}x_{2}+\beta_{3}x_{3}...}}   \]</span></p>
+</li>
+<li><p>What is the probability of churn if a customer complains twice?</p></li>
+</ul></section><section id="logistic-regression-with-one-predictor-variable-cont." class="slide level2 small"><h2>Logistic Regression with one predictor variable (cont.)</h2>
+<p><span class="math display">\[ p=\frac{e^{-2.57+1.71*2}}{1+e^{-2.57+1.71*2}}   \]</span></p>
+<div>
+<ul>
+<li class="fragment"><div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>p2 <span class="ot">=</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fl">2.57</span> <span class="sc">+</span> <span class="fl">1.71</span><span class="sc">*</span><span class="dv">2</span> ) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fl">2.57</span> <span class="sc">+</span> <span class="fl">1.71</span><span class="sc">*</span><span class="dv">2</span>) )</span>
+<span id="cb1-2"><a href="#cb1-2"></a>p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7005671</code></pre>
+</div>
+</div></li>
+<li class="fragment">
+<p>What is the probability of churn if a customer complains three times?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>p3 <span class="ot">=</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fl">2.57</span> <span class="sc">+</span> <span class="fl">1.71</span><span class="sc">*</span><span class="dv">3</span> ) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fl">2.57</span> <span class="sc">+</span> <span class="fl">1.71</span><span class="sc">*</span><span class="dv">3</span>) )</span>
+<span id="cb3-2"><a href="#cb3-2"></a>p3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9282425</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</section><section id="logistic-regression-with-multiple-predictor-variable" class="slide level2 small"><h2>Logistic Regression with multiple predictor variable</h2>
+<ul>
+<li>
+<p>We can add more predictor variables in a straightforward manner; Add age (continuous) and gender (0=female, 1=male)</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 14%">
+<col style="width: 23%">
+<col style="width: 13%">
+<col style="width: 17%">
+</colgroup>
+<thead><tr class="header">
+<th>Predictor variable</th>
+<th>Estimate</th>
+<th>Standard Error</th>
+<th>z-value</th>
+<th>p-value</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Constant</td>
+<td>1.24</td>
+<td>0.69</td>
+<td>1.85</td>
+<td>0.06**</td>
+</tr>
+<tr class="even">
+<td>Complaints</td>
+<td>1.74</td>
+<td>0.23</td>
+<td>7.73</td>
+<td>0.00***</td>
+</tr>
+<tr class="odd">
+<td>Age</td>
+<td>-0.10</td>
+<td>0.02</td>
+<td>-5.72</td>
+<td>0.00***</td>
+</tr>
+<tr class="even">
+<td>Gender</td>
+<td>-0.00</td>
+<td>0.45</td>
+<td>-0.00</td>
+<td>1.00</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>What variables are statistically significant? Is it positive or negative?</p></li>
+<li>
+<p>What is the probability of churn if customer complained twice and is 42 years old?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>p4 <span class="ot">=</span> <span class="fu">exp</span>(<span class="fl">1.24</span> <span class="sc">+</span> <span class="fl">1.74</span><span class="sc">*</span><span class="dv">2</span> <span class="sc">+</span> <span class="sc">-</span><span class="fl">0.10</span><span class="sc">*</span><span class="dv">42</span> ) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="fl">1.24</span> <span class="sc">+</span> <span class="fl">1.74</span><span class="sc">*</span><span class="dv">2</span> <span class="sc">+</span> <span class="sc">-</span><span class="fl">0.10</span><span class="sc">*</span><span class="dv">42</span>) )</span>
+<span id="cb5-2"><a href="#cb5-2"></a>p4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6271478</code></pre>
+</div>
+</div>
+</li>
+</ul></section><section id="agenda-2" class="slide level2 small"><h2>Agenda</h2>
+<ul>
+<li><p>Introduction</p></li>
+<li><p>Logistic Regression (Logit)</p></li>
+<li><p><strong>Logistic Regression (Logit) using R</strong></p></li>
+<li><p>Takeaways</p></li>
+</ul></section><section id="logistic-regression-for-chestnut-ridge-problem" class="slide level2 small"><h2>Logistic Regression for Chestnut Ridge Problem</h2>
+<ul>
+<li>You are interested in running a marketing campaign to promote the new season’s offerings</li>
+<li>In the past, you just sent the catalogs to all your customers</li>
+<li>Previously, you use a common heuristic-based technique called RFM</li>
+<li>Now that you want to apply more advanced analytical tools for the same problem</li>
+<li>You want to do the following tasks:
+<ul>
+<li>Use logit to identify the drivers of purchase</li>
+<li>Determine the customers you want to target</li>
+</ul>
+</li>
+<li>You have the same data for the RFM analysis plus some additional demographics</li>
+</ul></section><section id="logistic-regression-analysis-setup" class="slide level2 small"><h2>Logistic Regression Analysis Setup</h2>
+<ul>
+<li>R provides a default <code>glm</code> function; you don’t need to call additional package
+<ul>
+<li>We still call <code>tidyverse</code> and <code>readr</code> package; this is kind of default choice</li>
+</ul>
+</li>
+<li>As always, set the working directory and import the data</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="do">## Load Packages and Set Seed</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="fu">library</span>(readr)</span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb7-5"><a href="#cb7-5"></a></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="do">## Set working directory</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="fu">setwd</span>(<span class="st">"G:/My Drive/Teaching/Marketing Analytics/Chapter Examples"</span>)</span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="do">## Read in Logistic Regression data</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a>logit <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Chapter 8/retail_logit.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="logistic-regression-analysis-setup-1" class="slide level2 small"><h2>Logistic Regression Analysis Setup</h2>
+<ul>
+<li>Let’s <code>summary</code> the data</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">summary</span>(logit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  customer_id       revenue       number_of_orders   recency_days   
+ Min.   :    1   Min.   :   0.0   Min.   :  1.000   Min.   :  1.00  
+ 1st Qu.: 2501   1st Qu.:  69.0   1st Qu.:  2.000   1st Qu.: 90.75  
+ Median : 5000   Median : 170.0   Median :  4.000   Median :262.00  
+ Mean   : 5000   Mean   : 358.8   Mean   :  8.397   Mean   :302.25  
+ 3rd Qu.: 7500   3rd Qu.: 425.0   3rd Qu.: 10.000   3rd Qu.:446.00  
+ Max.   :10000   Max.   :8342.9   Max.   :257.000   Max.   :973.00  
+    purchase         married           income       loyalty_card   
+ Min.   :0.0000   Min.   :0.0000   Min.   : 10.0   Min.   :0.0000  
+ 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.: 65.0   1st Qu.:0.0000  
+ Median :0.0000   Median :1.0000   Median :110.0   Median :1.0000  
+ Mean   :0.1779   Mean   :0.5318   Mean   :102.1   Mean   :0.5448  
+ 3rd Qu.:0.0000   3rd Qu.:1.0000   3rd Qu.:150.0   3rd Qu.:1.0000  
+ Max.   :1.0000   Max.   :1.0000   Max.   :150.0   Max.   :1.0000  
+    zip_code    
+ Min.   : 7726  
+ 1st Qu.:19046  
+ Median :20854  
+ Mean   :18489  
+ 3rd Qu.:21771  
+ Max.   :24060  </code></pre>
+</div>
+</div>
+</section><section id="logistic-regression-analysis-setup-2" class="slide level2 small"><h2>Logistic Regression Analysis Setup</h2>
+<ul>
+<li>
+<p>See the distribution of the revenue; specifically max value</p>
+<ul>
+<li>it is a good idea to take a log transformation for a skewed variable</li>
+</ul>
+</li>
+<li>
+<p>Assume that we know from experience that the relationship between churn and the number of orders is non-linear</p>
+<ul>
+<li><p>That is, the expected positive relationship of the number of orders wears off at a certain point</p></li>
+<li><p>For such a non-linear relationship, it is practical to include the squared value of such variable</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="do">## Transform and Create Data</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>logit <span class="ot">=</span> logit <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">number_of_orders2 =</span> number_of_orders<span class="sc">^</span><span class="dv">2</span>,</span>
+<span id="cb10-3"><a href="#cb10-3"></a>                         <span class="at">lnrevenue =</span> <span class="fu">log</span>(revenue <span class="sc">+</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</li>
+</ul></section><section id="logistic-regression-analysis-setup-3" class="slide level2 small"><h2>Logistic Regression Analysis Setup</h2>
+<ul>
+<li>Let’s <code>summary</code> the data one more time</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">summary</span>(logit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  customer_id       revenue       number_of_orders   recency_days   
+ Min.   :    1   Min.   :   0.0   Min.   :  1.000   Min.   :  1.00  
+ 1st Qu.: 2501   1st Qu.:  69.0   1st Qu.:  2.000   1st Qu.: 90.75  
+ Median : 5000   Median : 170.0   Median :  4.000   Median :262.00  
+ Mean   : 5000   Mean   : 358.8   Mean   :  8.397   Mean   :302.25  
+ 3rd Qu.: 7500   3rd Qu.: 425.0   3rd Qu.: 10.000   3rd Qu.:446.00  
+ Max.   :10000   Max.   :8342.9   Max.   :257.000   Max.   :973.00  
+    purchase         married           income       loyalty_card   
+ Min.   :0.0000   Min.   :0.0000   Min.   : 10.0   Min.   :0.0000  
+ 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.: 65.0   1st Qu.:0.0000  
+ Median :0.0000   Median :1.0000   Median :110.0   Median :1.0000  
+ Mean   :0.1779   Mean   :0.5318   Mean   :102.1   Mean   :0.5448  
+ 3rd Qu.:0.0000   3rd Qu.:1.0000   3rd Qu.:150.0   3rd Qu.:1.0000  
+ Max.   :1.0000   Max.   :1.0000   Max.   :150.0   Max.   :1.0000  
+    zip_code     number_of_orders2   lnrevenue    
+ Min.   : 7726   Min.   :    1.0   Min.   :0.000  
+ 1st Qu.:19046   1st Qu.:    4.0   1st Qu.:4.248  
+ Median :20854   Median :   16.0   Median :5.142  
+ Mean   :18489   Mean   :  217.2   Mean   :5.150  
+ 3rd Qu.:21771   3rd Qu.:  100.0   3rd Qu.:6.054  
+ Max.   :24060   Max.   :66049.0   Max.   :9.029  </code></pre>
+</div>
+</div>
+</section><section id="logistic-regression" class="slide level2 small"><h2>Logistic Regression</h2>
+<ul>
+<li><p>Let’s run the model including all RFM variables and the demographics</p></li>
+<li><p>Discuss the results</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="do">## Run Logistic Regression using GLM</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>logit_result1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(<span class="at">formula =</span> purchase <span class="sc">~</span> lnrevenue <span class="sc">+</span> number_of_orders <span class="sc">+</span> number_of_orders2 <span class="sc">+</span> recency_days <span class="sc">+</span> </span>
+<span id="cb13-3"><a href="#cb13-3"></a>    loyalty_card <span class="sc">+</span> married <span class="sc">+</span> income, <span class="at">data =</span> logit, <span class="at">family =</span> <span class="st">"binomial"</span>)</span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="do">## The original summary function gives hard-to-read results</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a><span class="fu">summary</span>(logit_result1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = purchase ~ lnrevenue + number_of_orders + number_of_orders2 + 
+    recency_days + loyalty_card + married + income, family = "binomial", 
+    data = logit)
+
+Coefficients:
+                    Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)       -5.090e+00  2.323e-01 -21.914  &lt; 2e-16 ***
+lnrevenue          1.938e-01  4.181e-02   4.636 3.56e-06 ***
+number_of_orders   3.842e-02  5.512e-03   6.969 3.19e-12 ***
+number_of_orders2 -1.350e-04  4.516e-05  -2.990  0.00279 ** 
+recency_days      -1.729e-03  1.615e-04 -10.704  &lt; 2e-16 ***
+loyalty_card       8.955e-01  6.271e-02  14.281  &lt; 2e-16 ***
+married            7.840e-01  6.137e-02  12.775  &lt; 2e-16 ***
+income             1.398e-02  7.664e-04  18.241  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 9363.9  on 9999  degrees of freedom
+Residual deviance: 7446.9  on 9992  degrees of freedom
+AIC: 7462.9
+
+Number of Fisher Scoring iterations: 5</code></pre>
+</div>
+</div>
+</section><section id="logistic-regression-cont." class="slide level2 small"><h2>Logistic Regression (cont.)</h2>
+<ul>
+<li><p>Let’s include revenue instead of log(revenue+1)</p></li>
+<li><p>Is there a difference in model fit?</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>logit_result2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(<span class="at">formula =</span> purchase <span class="sc">~</span> revenue <span class="sc">+</span> number_of_orders <span class="sc">+</span> number_of_orders2 <span class="sc">+</span> recency_days <span class="sc">+</span> </span>
+<span id="cb15-2"><a href="#cb15-2"></a>    loyalty_card <span class="sc">+</span> married <span class="sc">+</span> income, <span class="at">data =</span> logit, <span class="at">family =</span> <span class="st">"binomial"</span>)</span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="fu">summary</span>(logit_result2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = purchase ~ revenue + number_of_orders + number_of_orders2 + 
+    recency_days + loyalty_card + married + income, family = "binomial", 
+    data = logit)
+
+Coefficients:
+                    Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)       -4.197e+00  1.268e-01 -33.103  &lt; 2e-16 ***
+revenue            1.192e-04  1.198e-04   0.995     0.32    
+number_of_orders   5.211e-02  6.281e-03   8.296  &lt; 2e-16 ***
+number_of_orders2 -2.187e-04  3.579e-05  -6.110 9.94e-10 ***
+recency_days      -1.830e-03  1.595e-04 -11.477  &lt; 2e-16 ***
+loyalty_card       8.974e-01  6.273e-02  14.305  &lt; 2e-16 ***
+married            7.874e-01  6.140e-02  12.824  &lt; 2e-16 ***
+income             1.410e-02  7.665e-04  18.389  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 9363.9  on 9999  degrees of freedom
+Residual deviance: 7468.7  on 9992  degrees of freedom
+AIC: 7484.7
+
+Number of Fisher Scoring iterations: 5</code></pre>
+</div>
+</div>
+</section><section id="logistic-regression-cont.-1" class="slide level2 small"><h2>Logistic Regression (cont.)</h2>
+<ul>
+<li><p>You can calculate the predicted probability that each customer will purchase</p></li>
+<li>
+<p>R provides a bulit-in <code>predict</code> function for this (which you manually calculated before)</p>
+<ul>
+<li>be sure to include <code>type = "response"</code>
+</li>
+</ul>
+</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>logit <span class="ot">=</span> logit <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">predicted_prob =</span> </span>
+<span id="cb17-2"><a href="#cb17-2"></a>                           <span class="fu">predict</span>(<span class="at">object =</span> logit_result1,</span>
+<span id="cb17-3"><a href="#cb17-3"></a>                                   <span class="at">newdata =</span> logit, </span>
+<span id="cb17-4"><a href="#cb17-4"></a>                                   <span class="at">type =</span> <span class="st">"response"</span>))</span>
+<span id="cb17-5"><a href="#cb17-5"></a><span class="fu">str</span>(logit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [10,000 × 12] (S3: tbl_df/tbl/data.frame)
+ $ customer_id      : num [1:10000] 1 2 3 4 5 6 7 8 9 10 ...
+ $ revenue          : num [1:10000] 738 300 74 178 552 ...
+ $ number_of_orders : num [1:10000] 19 10 1 2 15 3 3 1 5 10 ...
+ $ recency_days     : num [1:10000] 93 419 724 793 68 120 892 22 19 133 ...
+ $ purchase         : num [1:10000] 0 0 0 0 1 0 0 0 0 0 ...
+ $ married          : num [1:10000] 0 1 0 1 0 1 1 1 1 1 ...
+ $ income           : num [1:10000] 150 150 50 125 130 125 85 40 105 150 ...
+ $ loyalty_card     : num [1:10000] 1 1 0 1 1 0 0 1 0 0 ...
+ $ zip_code         : num [1:10000] 22181 21117 20850 22032 8527 ...
+ $ number_of_orders2: num [1:10000] 361 100 1 4 225 9 9 1 25 100 ...
+ $ lnrevenue        : num [1:10000] 6.6 5.71 4.32 5.19 6.32 ...
+ $ predicted_prob   : Named num [1:10000] 0.42624 0.36321 0.00843 0.12429 0.32632 ...
+  ..- attr(*, "names")= chr [1:10000] "1" "2" "3" "4" ...</code></pre>
+</div>
+</div>
+</section><section id="logistic-regression-cont.-2" class="slide level2 small"><h2>Logistic Regression (cont.)</h2>
+<ul>
+<li><p>You can even predict a hypothetical individual’s response</p></li>
+<li>
+<p>For example, think about a hypothetical individual with:</p>
+<ul>
+<li>lnrevenue=5, number_of_orders=5, recency_days=10, loyalty_card = 1, married = 0, income=150</li>
+</ul>
+</li>
+<li><p>What would be this person’s predicted probability of response?</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>new.df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">lnrevenue=</span><span class="dv">5</span>, <span class="at">number_of_orders=</span><span class="dv">5</span>, <span class="at">number_of_orders2=</span><span class="dv">25</span>,</span>
+<span id="cb19-2"><a href="#cb19-2"></a>                    <span class="at">recency_days=</span><span class="dv">10</span>, <span class="at">loyalty_card =</span> <span class="dv">1</span>, <span class="at">married =</span> <span class="dv">0</span>, <span class="at">income=</span><span class="dv">150</span>)</span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="fu">predict</span>(<span class="at">object =</span> logit_result1, <span class="at">newdata =</span> new.df, <span class="at">type =</span> <span class="st">"response"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        1 
+0.2774369 </code></pre>
+</div>
+</div>
+</section><section id="logistic-regression-cont.-3" class="slide level2 small"><h2>Logistic Regression (cont.)</h2>
+<ul>
+<li><p>You can also calculate the odd-ratio</p></li>
+<li>
+<p>The interpretation of the odds ratio is as follows: Taking a loyalty card as an example</p>
+<ul>
+<li>A customer who has the loyalty card has 144.9% higher odds of purchasing than a customer who does not have the loyalty card</li>
+</ul>
+</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">exp</span>(logit_result1<span class="sc">$</span>coefficients)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      (Intercept)         lnrevenue  number_of_orders number_of_orders2 
+      0.006156838       1.213857039       1.039163529       0.999864968 
+     recency_days      loyalty_card           married            income 
+      0.998272653       2.448647516       2.190297008       1.014078274 </code></pre>
+</div>
+</div>
+</section><section id="breakeven-analysis" class="slide level2 small"><h2>Breakeven Analysis</h2>
+<ul>
+<li><p>To decide whom we want to target, we need to identify a break-even rate</p></li>
+<li>
+<p>We need the following information</p>
+<ul>
+<li><p>Average purchase amounts from the marketing campaign: $40</p></li>
+<li><p>Average cost of good sold (contribution margin): $19.20</p></li>
+<li><p>Average cost of shipping: $6</p></li>
+<li><p>Average cost of marketing campaign (e.g., catalog): $2</p></li>
+</ul>
+</li>
+<li>
+<p>Break-even rate is</p>
+<p><span class="math display">\[ \text{breakeven}=\frac{\text{cost of marketing campaign}}{\text{Profit from a single sale}}=\frac{\$2}{\$12.8}=15.63\% \]</span></p>
+</li>
+<li><p>Let’s figure out whom to target using R</p></li>
+</ul></section><section id="figuring-out-target-customers" class="slide level2 small"><h2>Figuring out Target Customers</h2>
+<ul>
+<li><p>You need to target the customers who belong to RFM cells with response rate greater than 15.63%</p></li>
+<li><p>We can simply <code>filter</code> them out</p></li>
+<li><p>Out of 10,000 customers, we should only target 3,946 customers whose predicted response rate is greater than 15.63%</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="do">## Whom to target</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a>logit_target <span class="ot">=</span> logit <span class="sc">%&gt;%</span> <span class="fu">filter</span>(predicted_prob <span class="sc">&gt;</span> <span class="fl">0.1563</span>)</span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="fu">str</span>(logit_target)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [3,946 × 12] (S3: tbl_df/tbl/data.frame)
+ $ customer_id      : num [1:3946] 1 2 5 9 10 11 13 16 22 23 ...
+ $ revenue          : num [1:3946] 738 300 552 250 238 ...
+ $ number_of_orders : num [1:3946] 19 10 15 5 10 13 15 3 7 4 ...
+ $ recency_days     : num [1:3946] 93 419 68 19 133 28 51 60 258 50 ...
+ $ purchase         : num [1:3946] 0 0 1 0 0 0 0 1 0 0 ...
+ $ married          : num [1:3946] 0 1 0 1 1 0 1 1 0 1 ...
+ $ income           : num [1:3946] 150 150 130 105 150 95 150 145 150 150 ...
+ $ loyalty_card     : num [1:3946] 1 1 1 0 0 1 1 1 1 1 ...
+ $ zip_code         : num [1:3946] 22181 21117 8527 20910 8057 ...
+ $ number_of_orders2: num [1:3946] 361 100 225 25 100 169 225 9 49 16 ...
+ $ lnrevenue        : num [1:3946] 6.6 5.71 6.32 5.53 5.48 ...
+ $ predicted_prob   : Named num [1:3946] 0.426 0.363 0.326 0.166 0.268 ...
+  ..- attr(*, "names")= chr [1:3946] "1" "2" "5" "9" ...</code></pre>
+</div>
+</div>
+</section><section id="agenda-3" class="slide level2 medium"><h2>Agenda</h2>
+<ul>
+<li><p>Introduction</p></li>
+<li><p>Logistic Regression (Logit)</p></li>
+<li><p>Logistic Regression (Logit) using R</p></li>
+<li><p><strong>Takeaways</strong></p></li>
+</ul></section><section id="takeaways" class="slide level2 medium"><h2>Takeaways</h2>
+<ul>
+<li><p>Logistic regression is akin to other regression models (e.g.&nbsp;OLS regression) but is used when the dependent (i.e., outcome) variable is binary instead of, for example, continuous.</p></li>
+<li><p>Logistic regression allows researchers to estimate the probability that a binary outcome of interest occurs based on one or more predictor variables.&nbsp;</p></li>
+<li><p>Logistic regression allows researchers to identify variables that significantly predict the binary outcome variable.</p></li>
+<li><p>The probability with which a binary event of interest occurs based on predictor variables can also be expressed in odds.&nbsp;</p></li>
+</ul></section><section id="takeaways-1" class="slide level2 medium"><h2>Takeaways</h2>
+<ul>
+<li><p>Probability and odds are often used interchangeably, but they are not equivalent mathematically. Probability captures the ratio of how often a binary event of interest occurs (e.g., customers who churn) over all possible events (e.g., customers who do and do not churn).&nbsp;</p></li>
+<li><p>In contrast, odds capture the ratio of how often an event of interest occurs (e.g., customers who churn) over how often it does not occur (e.g., customer who do not churn).</p></li>
+</ul></section><section id="next-class" class="slide level2 medium"><h2>Next Class</h2>
+<ul>
+<li><p>Customer Lifetime Value</p></li>
+<li><p>Replication homework!</p></li>
+</ul>
+<div class="footer footer-default">
+
+</div>
+</section>
+</div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="Sessionxx+6_Logistic%20Regression_files/libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="Sessionxx+6_Logistic%20Regression_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="Sessionxx+6_Logistic%20Regression_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="Sessionxx+6_Logistic%20Regression_files/libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="Sessionxx+6_Logistic%20Regression_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="Sessionxx+6_Logistic%20Regression_files/libs/revealjs/plugin/quarto-support/support.js"></script><script src="Sessionxx+6_Logistic%20Regression_files/libs/revealjs/plugin/notes/notes.js"></script><script src="Sessionxx+6_Logistic%20Regression_files/libs/revealjs/plugin/search/search.js"></script><script src="Sessionxx+6_Logistic%20Regression_files/libs/revealjs/plugin/zoom/zoom.js"></script><script src="Sessionxx+6_Logistic%20Regression_files/libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script><script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script><script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+
+
+</body></html>
